@@ -34,13 +34,7 @@ jobs:
       - name: Build package files
         run: npm run build
 
-      - name: Configure GitHub Package Registry as Publish Target
-        uses: actions/setup-node@v1
-        with:
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@kastov'
-
-      - name: Publish to GitHub Package Registry
+      - name: Publish to NPM
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
